@@ -29,4 +29,23 @@ Actor.main(async () => {
 
     const posts = await page.$$eval('[data-testid="post_message"]', nodes => {
         return nodes.map(el => ({
-            text: el.innerText
+            text: el.innerText,
+            url: el.closest('a')?.href || null,
+        }));
+    });
+
+    const filtered = posts.filter(post =>
+        post.text &&
+        keywords.some(keyword =>
+            post.text.toLowerCase().includes(keyword.toLowerCase())
+        )
+    );
+
+    console.log(`Found ${filtered.length} matching posts.`);
+
+    for (const post of filtered) {
+        await Actor.pushData(post);
+    }
+
+    await browser.close();
+});
