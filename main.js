@@ -1,5 +1,5 @@
 const { Actor } = require('apify');
-const puppeteer = require('apify/puppeteer'); // 👈 this is the key fix
+const puppeteer = require('puppeteer');
 
 Actor.main(async () => {
     const input = await Actor.getInput();
