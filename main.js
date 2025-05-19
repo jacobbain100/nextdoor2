@@ -5,7 +5,12 @@ Actor.main(async () => {
     const input = await Actor.getInput();
     const { username, password, keywords } = input;
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+    headless: true,
+    executablePath: puppeteer.executablePath(), // use Apify's Chromium
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
+
     const page = await browser.newPage();
 
     console.log('Logging into Nextdoor...');
