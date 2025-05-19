@@ -1,4 +1,4 @@
-const { Actor } = require('apify');
+const { Actor, browserTools } = require('apify');
 const puppeteer = require('puppeteer');
 
 Actor.main(async () => {
@@ -6,10 +6,10 @@ Actor.main(async () => {
     const { username, password, keywords } = input;
 
     const browser = await puppeteer.launch({
-    headless: true,
-    executablePath: puppeteer.executablePath(), // use Apify's Chromium
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-});
+        headless: true,
+        executablePath: await browserTools.getChromiumExecutablePath(),
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
 
     const page = await browser.newPage();
 
