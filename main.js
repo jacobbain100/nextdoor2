@@ -5,9 +5,11 @@ Actor.main(async () => {
     const input = await Actor.getInput();
     const { username, password, keywords } = input;
 
+    const executablePath = puppeteer.executablePath();
+
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: process.env.CHROME_BIN || '/usr/bin/google-chrome',
+        executablePath,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
