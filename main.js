@@ -1,11 +1,13 @@
-const { Actor, launchPuppeteer } = require('apify');
+const { Actor } = require('apify');
+const puppeteer = require('puppeteer');
 
 Actor.main(async () => {
     const input = await Actor.getInput();
     const { username, password, keywords } = input;
 
-    const browser = await launchPuppeteer({
+    const browser = await puppeteer.launch({
         headless: true,
+        executablePath: process.env.CHROME_BIN || '/usr/bin/google-chrome',
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
@@ -39,11 +41,4 @@ Actor.main(async () => {
         )
     );
 
-    console.log(`Found ${filtered.length} matching posts.`);
-
-    for (const post of filtered) {
-        await Actor.pushData(post);
-    }
-
-    await browser.close();
-});
+    console.log
