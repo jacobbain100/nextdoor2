@@ -1,15 +1,12 @@
 const { Actor } = require('apify');
-const puppeteer = require('puppeteer');
+const puppeteer = require('apify/puppeteer'); // 👈 this is the key fix
 
 Actor.main(async () => {
     const input = await Actor.getInput();
     const { username, password, keywords } = input;
 
-    const executablePath = puppeteer.executablePath();
-
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
