@@ -1,0 +1,12 @@
+{
+  "name": "nextdoor-lead-alerts",
+  "version": "0.0.1",
+  "description": "Scrapes Nextdoor for posts matching service keywords",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "apify": "^3.0.0",
+    "puppeteer": "^22.8.2"
+  }
+}

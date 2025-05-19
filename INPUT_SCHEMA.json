@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "type": "object",
+  "title": "Nextdoor Scraper Input",
+  "description": "Login credentials and keyword filters for scraping Nextdoor posts.",
+  "properties": {
+    "username": {
+      "type": "string",
+      "title": "Email",
+      "description": "Your Nextdoor account email address",
+      "editor": "textfield"
+    },
+    "password": {
+      "type": "string",
+      "title": "Password",
+      "description": "Your Nextdoor account password",
+      "editor": "textfield"
+    },
+    "keywords": {
+      "type": "array",
+      "title": "Keywords",
+      "description": "Words or phrases to match in post content",
+      "editor": "stringList"
+    }
+  },
+  "required": ["username", "password", "keywords"]
+}
