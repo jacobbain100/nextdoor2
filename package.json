@@ -8,5 +8,8 @@
   "dependencies": {
     "apify": "^3.0.0",
     "puppeteer": "^22.8.2"
+  },
+  "puppeteer": {
+    "default_browser_revision": "1229012"
   }
 }
